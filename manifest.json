@@ -1,0 +1,25 @@
+{
+  "name": "GF Beep Enhancement",
+  "version": "1.0.1",
+  "description": "Make a noise when Glowforge is ready to print.",
+  "icons": {
+    "16": "gf_beep16.png",
+    "48": "gf_beep48.png",
+    "128": "gf_beep128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.glowforge.com/*"
+      ],
+      "run_at": "document_idle",
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "sounds/ready.mp3"
+  ],
+  "manifest_version": 2
+}
