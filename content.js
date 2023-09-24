@@ -5,27 +5,30 @@
 // This is our sound player.
 var readyAudio = new Audio(chrome.runtime.getURL("sounds/ready.mp3"));
 
-// We use the print button's "blinking" attribute to decide when to beep
-var isBlinking = false;
+// Beep whenever the print button transitions from "scanning" to not scanning
+var isScanning = false;
 var checkAndBeep = function () {
-  if (document.querySelector('div.MachineStatusIcon.blinking')) {
-    if (!isBlinking) {
-      isBlinking = true;
+  if (document.querySelector('div.MachineStatusIcon.scanning')) {
+    isScanning = true;
+  }
+  else {
+    // Only if we'd been scanning...
+    if (isScanning) {
+      // ...and have now stopped.
+      isScanning = false;
+
       // There are some restrictions around playing audio if the user hasn't
       // interacted with the page, for example if they load the GFUI when it's
       // already waiting to print. We just catch and let it go.
       var promise = readyAudio.play();
       if (promise !== undefined) {
         promise.then(_ => {
-          console.log("Played print ready sound");
+          console.log("Played ready sound");
         }).catch(error => {
           console.log("Failed to play sound: " + error);
         });
       }
     }
-  }
-  else {
-    isBlinking = false;
   }
 };
 
