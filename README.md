@@ -2,9 +2,11 @@
 
 Chrome extension to play a sound when the Glowforge is ready.
 
-Installation instructions:
+Easy install from Chrome web store: https://chrome.google.com/webstore/detail/gf-beep-enhancement/dpajnighclcehnkemalfcogcpcldocfj
 
-1\. Download ZIP file from https://github.com/masto/gf-beep-enhancement/releases
+Or to install manually:
+
+1\. Download ZIP file from https://github.com/masto/gf-beep-enhancement/releases and unzip.
 
 2\. Install
 
